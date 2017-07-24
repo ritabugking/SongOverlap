@@ -1,37 +1,40 @@
 tier = string(tier);
 
-bhgr=0;
-blph=0;
-ocwa=0;
-spto2=0;
 spto=0;
+ocwa=0;
+nawa=0;
+bhgr=0;
+bhcb=0;
+oth = 0;
 for i = 1:length(tier)
-if tier(i)=='BHGR'
-bhgr = bhgr + tmax(i) - tmin(i);
-elseif tier(i)=='BLPH'
-blph = blph + tmax(i) - tmin(i);
+if tier(i)=='SPTO'
+spto = spto + tmax(i) - tmin(i);
 elseif tier(i)=='OCWA'
 ocwa = ocwa + tmax(i) - tmin(i);
-elseif tier(i)=='SPTO2'
-spto2 = spto2 + tmax(i) - tmin(i);
-else tier(i)=='SPTO'
-spto = spto + tmax(i) - tmin(i);
+elseif tier(i)=='BLPH'
+nawa = nawa + tmax(i) - tmin(i);
+elseif tier(i)=='BrownHeadedCowbird'
+bhcb = bhcb + tmax(i) - tmin(i);
+elseif tier(i)=='AlarmCall'
+oth = oth + tmax(i) - tmin(i);
+else tier(i)=='BHGR'
+bhgr = bhgr + tmax(i) - tmin(i);
 end
 end
 
-singlen=[bhgr, blph, ocwa, spto2, spto];
+singlen=[spto, ocwa, nawa, bhgr, bhcb, oth];
 p_sing = singlen/300
 
 p_nonSing = 1;
-for i=1:5
+for i=1:length(singlen)
 p_nonSing = p_nonSing*(1-p_sing(i));
 end
 
 p_oneSing = 0;
-for i=1:5
+for i=1:length(singlen)
 temp = 1;
 temp = temp*p_sing(i);
-for j=1:5
+for j=1:length(singlen)
 if j~=i
 temp = temp*(1-p_sing(j));
 end
