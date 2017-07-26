@@ -11,9 +11,11 @@ while(i<length(tier))
             if tmax(i)<tmax(i+a)
                 if tmin(i+a)>time
                     t_overlap=t_overlap+tmax(i)-tmin(i+a);
+                    disp(tmax(i)-tmin(i+a))
                     time = tmax(i);
                 elseif tmax(i)>time
                     t_overlap=t_overlap+tmax(i)-time;
+                    disp(tmax(i)-time)
                     time = tmax(i);
                 else
                     time = time;
@@ -23,20 +25,21 @@ while(i<length(tier))
             else
                 if tmin(i+a)>time
                     t_overlap=t_overlap+tmax(i+a)-tmin(i+a);
+                    disp(tmax(i+a)-tmin(i+a))
                     time = tmax(i+a);
                 elseif tmax(i+a)>time
                     t_overlap=t_overlap+tmax(i+a)-time;
+                    disp(tmax(i+a)-time)
                     time = tmax(i+a);
                 else
                     time = time;
                 end
                 a=a+1;
-                time = tmax(i+a);
             end
         else
             a=0;
         end
-        a=0;
+        
     end
 i=i+1;
 end
