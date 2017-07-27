@@ -23,11 +23,13 @@ p_oneSing = 0;
 for i=1:length(singlen)
     temp = 1;
     temp = temp*p_sing(i);
-for j=1:length(singlen)
-    if j~=i
-        temp = temp*(1-p_sing(j));
+    for j=1:length(singlen)
+        if j~=i
+            temp = temp*(1-p_sing(j));
+        end
     end
-end
-p_oneSing = p_oneSing+temp;
+    p_oneSing = p_oneSing+temp;
 end
 p_overlap = 1-p_nonSing-p_oneSing;
+disp('expected overlap: ')
+disp(p_overlap)
