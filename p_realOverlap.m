@@ -2,12 +2,12 @@ t_overlap=0;
 i=1;
 a=0;
 time = 0;
-while(i<length(tier))
-    if (i+a)<=length(tier)
+while(i<size(tier,1))
+    if (i+a)<=size(tier,1)
         a=a+1;
     end    
     while(a~=0)
-        if (i+a)<=length(tier)       
+        if (i+a)<=size(tier,1)      
             if tmax(i)>tmin(i+a)
                 if tmax(i)<tmax(i+a)
                     if tmin(i+a)>time
